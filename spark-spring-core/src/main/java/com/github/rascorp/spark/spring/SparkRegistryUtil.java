@@ -20,19 +20,13 @@ public class SparkRegistryUtil {
     @Autowired
     private List<Registry> registries;
 
-    // @Autowired
-    // private SparkConfigurationRegistry sparkConfigurationRegistry;
-
     /**
      * Iterate all Spring bean of {@link Registry} type to execute the Spark context
      */
     public void registry(final SparkConfiguration sparkConfiguration) {
-        // sparkConfigurationRegistry.registry(sparkConfiguration);
-        registries.stream().sorted((a, b) -> a.weigh().compareTo(b.weigh()))
-                  // .filter(element -> (element instanceof SparkConfigurationRegistry))
-                  .forEach(registry ->
-                                   registry.registry(sparkConfiguration)
-                          );
+        registries.stream()
+                  .sorted((a, b) -> a.weigh().compareTo(b.weigh()))
+                  .forEach(registry -> registry.registry(sparkConfiguration));
 
     }
 

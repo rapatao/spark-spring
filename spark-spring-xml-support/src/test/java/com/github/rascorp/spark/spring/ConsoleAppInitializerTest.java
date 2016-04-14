@@ -37,7 +37,6 @@ public class ConsoleAppInitializerTest {
     }
 
     @Test
-    @Ignore // FIXME check why it's not run in travis-ci container
     public void testContext() {
         try {
             URL url = new URL("http://0.0.0.0:4568/method1");
@@ -46,6 +45,7 @@ public class ConsoleAppInitializerTest {
             final String response = bufferedReader.readLine();
             Assert.assertEquals("method1", response);
         } catch (IOException e) {
+            e.printStackTrace();
             Assert.fail(e.getMessage());
         }
     }
