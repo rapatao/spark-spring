@@ -11,5 +11,3 @@ notifications:
   email:
   - rapatao@rapatao.com
   - dceschmidt@gmail.com
-
-sudo: false
