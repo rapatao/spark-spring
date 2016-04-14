@@ -35,6 +35,7 @@ public class ConsoleAppInitializerTest {
     @BeforeClass
     public static void setup() {
         ConsoleAppInitializer.initialize(sparkConfiguration, "application-context-spark-spring-test.xml");
+        Spark.awaitInitialization();
     }
 
     @Test

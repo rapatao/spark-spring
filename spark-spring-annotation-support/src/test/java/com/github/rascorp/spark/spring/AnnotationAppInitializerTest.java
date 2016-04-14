@@ -33,6 +33,7 @@ public class AnnotationAppInitializerTest {
     @BeforeClass
     public static void setup() {
         AnnotationAppInitializer.initialize(sparkConfiguration);
+        Spark.awaitInitialization();
     }
 
     @Test
