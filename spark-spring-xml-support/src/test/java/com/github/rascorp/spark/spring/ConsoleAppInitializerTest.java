@@ -11,17 +11,18 @@ import java.net.URLConnection;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.github.rascorp.spark.spring.configuration.SparkConfiguration;
 
+import lombok.extern.slf4j.Slf4j;
 import spark.Spark;
 
 /**
  * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
  * @since 13/04/2016
  */
+@Slf4j
 public class ConsoleAppInitializerTest {
 
     private static final SparkConfiguration sparkConfiguration = SparkConfiguration.builder().port(4568).build();
@@ -45,7 +46,7 @@ public class ConsoleAppInitializerTest {
             final String response = bufferedReader.readLine();
             Assert.assertEquals("method1", response);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
             Assert.fail(e.getMessage());
         }
     }
