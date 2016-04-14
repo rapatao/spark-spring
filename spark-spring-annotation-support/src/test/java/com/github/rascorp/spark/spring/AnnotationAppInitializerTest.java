@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -22,6 +23,7 @@ public class AnnotationAppInitializerTest {
 
     private static final SparkConfiguration sparkConfiguration = SparkConfiguration.builder().port(4569).build();
 
+    @AfterClass
     public static void finish() {
         Spark.stop();
     }
