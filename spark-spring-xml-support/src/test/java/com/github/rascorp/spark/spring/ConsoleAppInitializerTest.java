@@ -38,7 +38,7 @@ public class ConsoleAppInitializerTest {
     @Test
     public void testContext() {
         try {
-            URL url = new URL("http://localhost:4568/method1");
+            URL url = new URL("http://0.0.0.0:4568/method1");
             final URLConnection urlConnection = url.openConnection();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             final String response = bufferedReader.readLine();
