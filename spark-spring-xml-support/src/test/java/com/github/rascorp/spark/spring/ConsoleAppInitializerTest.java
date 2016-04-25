@@ -54,7 +54,11 @@ public class ConsoleAppInitializerTest {
 
     @Test
     public void testPrivateConstructor() {
-        testPrivateConstructorNoArguments(ConsoleAppInitializer.class);
+        try {
+            testPrivateConstructorNoArguments(ConsoleAppInitializer.class);
+        } catch (Exception e) {
+            Assert.fail(e.getMessage());
+        }
     }
 
 }
