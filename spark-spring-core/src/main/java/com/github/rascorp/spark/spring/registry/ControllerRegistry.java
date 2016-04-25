@@ -27,9 +27,9 @@ public class ControllerRegistry implements Registry {
     /**
      * Utility class to iterate all methods to registry the Spark handlers
      */
-    static final class SparkMethodRegistry {
-        static void registry(final SparkController sparkController,
-                             final Method method) {
+    private static final class SparkMethodRegistry {
+        private static void registry(final SparkController sparkController,
+                                     final Method method) {
             Arrays.stream(method.getDeclaredAnnotationsByType(SparkRequestHandler.class)).forEach(element -> {
                 SparkRequestHandlerRegistry.registry(sparkController, method, element);
             });
@@ -40,10 +40,10 @@ public class ControllerRegistry implements Registry {
     /**
      * Utility class to iterate all fields with {@link SparkRequestHandler} to create the {@link Route} for Spark
      */
-    static final class SparkRequestHandlerRegistry {
-        static void registry(final SparkController sparkController,
-                             final Method method,
-                             final SparkRequestHandler sparkRequestHandler) {
+    private static final class SparkRequestHandlerRegistry {
+        private static void registry(final SparkController sparkController,
+                                     final Method method,
+                                     final SparkRequestHandler sparkRequestHandler) {
 
             Arrays.stream(sparkRequestHandler.requestMethod()).forEach(requestMethods -> {
                 Route route = (request, response) -> method.invoke(sparkController, request, response);
@@ -66,6 +66,8 @@ public class ControllerRegistry implements Registry {
                     case PUT:
                         Spark.put(path, route);
                         break;
+                    default:
+                        throw new SparkRegistryException("Request scope not defined");
                 }
             });
 
@@ -82,7 +84,7 @@ public class ControllerRegistry implements Registry {
      */
     @Override
     public void registry(final SparkConfiguration sparkConfiguration) {
-        if (sparkControllers == null && sparkControllers.isEmpty()) {
+        if (sparkControllers == null || sparkControllers.isEmpty()) {
             throw new SparkRegistryException("Not found any class of type " + SparkController.class.getName());
         }
 

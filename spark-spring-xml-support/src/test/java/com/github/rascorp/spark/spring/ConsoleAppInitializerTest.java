@@ -27,15 +27,15 @@ public class ConsoleAppInitializerTest {
 
     private static final SparkConfiguration sparkConfiguration = SparkConfiguration.builder().port(4568).build();
 
-    @AfterClass
-    public static void finish() {
-        Spark.stop();
-    }
-
     @BeforeClass
-    public static void setup() {
+    public static void oneTimeSetUp() {
         ConsoleAppInitializer.initialize(sparkConfiguration, "application-context-spark-spring-test.xml");
         Spark.awaitInitialization();
+    }
+
+    @AfterClass
+    public static void oneTimeTearDown() {
+        Spark.stop();
     }
 
     @Test

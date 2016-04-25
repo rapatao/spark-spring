@@ -25,15 +25,15 @@ public class AnnotationAppInitializerTest {
 
     private static final SparkConfiguration sparkConfiguration = SparkConfiguration.builder().port(4569).build();
 
-    @AfterClass
-    public static void finish() {
-        Spark.stop();
-    }
-
     @BeforeClass
-    public static void setup() {
+    public static void oneTimeSetUp() {
         AnnotationAppInitializer.initialize(sparkConfiguration);
         Spark.awaitInitialization();
+    }
+
+    @AfterClass
+    public static void oneTimeTearDown() {
+        Spark.stop();
     }
 
     @Test
