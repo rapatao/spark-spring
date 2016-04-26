@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Define the handle method for an specified http method and request path.
  *
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 @Retention(RetentionPolicy.RUNTIME)

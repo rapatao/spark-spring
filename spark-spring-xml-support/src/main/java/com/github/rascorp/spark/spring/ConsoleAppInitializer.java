@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 /**
  * Create XML based for Spring Context and configure all Spark resources.
  *
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

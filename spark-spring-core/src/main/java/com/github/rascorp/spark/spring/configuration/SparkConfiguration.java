@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 /**
  * Represent the Spark Jetty Configuration
  *
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 @Builder

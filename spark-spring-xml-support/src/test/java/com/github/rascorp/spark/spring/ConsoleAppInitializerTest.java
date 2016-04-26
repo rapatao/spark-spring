@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import spark.Spark;
 
 /**
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 @Slf4j

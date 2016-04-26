@@ -5,7 +5,7 @@ import com.github.rascorp.spark.spring.annotations.SparkRequestHandler;
 /**
  * Define the contract of all Spark Controllers.
  *
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 public interface SparkController {

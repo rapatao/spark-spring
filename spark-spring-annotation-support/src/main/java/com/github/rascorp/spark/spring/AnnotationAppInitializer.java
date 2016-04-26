@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import com.github.rascorp.spark.spring.configuration.SparkConfiguration;
 
 /**
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 @Configuration

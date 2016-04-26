@@ -11,7 +11,7 @@ import com.github.rascorp.spark.spring.registry.Registry;
 /**
  * Spring bean class to registry all Spark configuration
  *
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 @Component

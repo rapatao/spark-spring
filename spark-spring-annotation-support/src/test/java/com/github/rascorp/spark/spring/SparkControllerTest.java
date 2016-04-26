@@ -8,7 +8,7 @@ import spark.Request;
 import spark.Response;
 
 /**
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 @Component

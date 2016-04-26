@@ -8,7 +8,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
 /**
- * @author Luiz Henrique Rapatao <rapatao@rapatao.com>
+ * @author Luiz Henrique Rapatao - rapatao@rapatao.com
  * @since 13/04/2016
  */
 public final class ConstructorTestHelper {
