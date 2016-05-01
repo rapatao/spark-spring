@@ -1,14 +1,12 @@
 package com.github.rascorp.spark.spring.registry;
 
 import com.github.rascorp.spark.spring.SparkController;
-import com.github.rascorp.spark.spring.annotations.SparkRequestHandler;
 import com.github.rascorp.spark.spring.configuration.SparkConfiguration;
 import com.github.rascorp.spark.spring.exceptions.SparkRegistryException;
+import com.github.rascorp.spark.spring.registry.controller.SparkMethodRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import spark.Route;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,38 +18,6 @@ import java.util.List;
  */
 @Component
 public class ControllerRegistry implements Registry {
-
-    /**
-     * Utility class to iterate all methods to registry the Spark handlers
-     */
-    private static final class SparkMethodRegistry {
-        private static void registry(final SparkController sparkController,
-                                     final Method method) {
-            Arrays.stream(method.getDeclaredAnnotationsByType(SparkRequestHandler.class)).forEach(element -> {
-                SparkRequestHandlerRegistry.registry(sparkController, method, element);
-            });
-        }
-
-    }
-
-    /**
-     * Utility class to iterate all fields with {@link SparkRequestHandler} to create the {@link Route} for Spark
-     */
-    private static final class SparkRequestHandlerRegistry {
-        private static void registry(final SparkController sparkController,
-                                     final Method method,
-                                     final SparkRequestHandler sparkRequestHandler) {
-            Arrays.stream(sparkRequestHandler.requestMethod()).forEach(requestMethod -> {
-                Route route = (request, response) -> method.invoke(sparkController, request, response);
-                String path = sparkController.getRootPath() + sparkRequestHandler.path();
-                if (requestMethod != null) {
-                    requestMethod.registry(path, route);
-                } else {
-                    throw new SparkRegistryException("Request scope not defined");
-                }
-            });
-        }
-    }
 
     @Autowired
     private List<SparkController> sparkControllers;
@@ -66,12 +32,9 @@ public class ControllerRegistry implements Registry {
         if (sparkControllers == null || sparkControllers.isEmpty()) {
             throw new SparkRegistryException("Not found any class of type " + SparkController.class.getName());
         }
-
-        sparkControllers.stream().forEach(sparkController -> {
-            Arrays.stream(sparkController.getClass().getDeclaredMethods()).forEach(method -> {
-                SparkMethodRegistry.registry(sparkController, method);
-            });
-        });
+        sparkControllers.stream().forEach(sparkController ->
+                Arrays.stream(sparkController.getClass().getDeclaredMethods()).forEach(
+                        method -> SparkMethodRegistry.registry(sparkController, method)));
     }
 
 }
