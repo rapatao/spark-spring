@@ -1,5 +1,8 @@
 package com.github.rascorp.spark.spring.annotations;
 
+import com.github.rascorp.spark.spring.RequestMethod;
+import com.github.rascorp.spark.spring.ResponseType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,20 +17,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface SparkRequestHandler {
-
-    /**
-     * Define supported http request methods types
-     */
-    enum RequestMethod {
-        GET, POST, PUT, DELETE, OPTIONS
-    }
-
-    /**
-     * Define supported response type
-     */
-    enum ResponseType {
-        JSON, NONE
-    }
 
     /**
      * the service URL.

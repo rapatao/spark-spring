@@ -1,9 +1,7 @@
 package com.github.rascorp.spark.spring;
 
-import org.springframework.stereotype.Component;
-
 import com.github.rascorp.spark.spring.annotations.SparkRequestHandler;
-
+import org.springframework.stereotype.Component;
 import spark.Request;
 import spark.Response;
 
@@ -15,8 +13,8 @@ import spark.Response;
 public class SparkControllerTest implements SparkController {
 
     @SparkRequestHandler(path = "/method1", requestMethod = {
-            SparkRequestHandler.RequestMethod.GET,
-            SparkRequestHandler.RequestMethod.POST
+            RequestMethod.GET,
+            RequestMethod.POST
     })
     public String method1(final Request request,
                           final Response response) {
@@ -24,15 +22,15 @@ public class SparkControllerTest implements SparkController {
     }
 
     @SparkRequestHandler(path = "/method2", requestMethod = {
-            SparkRequestHandler.RequestMethod.DELETE,
-            SparkRequestHandler.RequestMethod.OPTIONS
+            RequestMethod.DELETE,
+            RequestMethod.OPTIONS
     })
     public Integer method2(final Request request,
                            final Response response) {
         return 2;
     }
 
-    @SparkRequestHandler(path = "/method3", requestMethod = SparkRequestHandler.RequestMethod.PUT)
+    @SparkRequestHandler(path = "/method3", requestMethod = RequestMethod.PUT)
     public Object method3(final Request request,
                           final Response response) {
         return "method3";

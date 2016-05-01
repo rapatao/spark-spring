@@ -1,19 +1,16 @@
 package com.github.rascorp.spark.spring.registry;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.github.rascorp.spark.spring.SparkController;
 import com.github.rascorp.spark.spring.annotations.SparkRequestHandler;
 import com.github.rascorp.spark.spring.configuration.SparkConfiguration;
 import com.github.rascorp.spark.spring.exceptions.SparkRegistryException;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import spark.Route;
-import spark.Spark;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Registry all Spark Controllers
@@ -44,33 +41,15 @@ public class ControllerRegistry implements Registry {
         private static void registry(final SparkController sparkController,
                                      final Method method,
                                      final SparkRequestHandler sparkRequestHandler) {
-
-            Arrays.stream(sparkRequestHandler.requestMethod()).forEach(requestMethods -> {
+            Arrays.stream(sparkRequestHandler.requestMethod()).forEach(requestMethod -> {
                 Route route = (request, response) -> method.invoke(sparkController, request, response);
                 String path = sparkController.getRootPath() + sparkRequestHandler.path();
-
-                // TODO change to use a transform using response type
-                switch(requestMethods) {
-                    case GET:
-                        Spark.get(path, route);
-                        break;
-                    case POST:
-                        Spark.post(path, route);
-                        break;
-                    case DELETE:
-                        Spark.delete(path, route);
-                        break;
-                    case OPTIONS:
-                        Spark.options(path, route);
-                        break;
-                    case PUT:
-                        Spark.put(path, route);
-                        break;
-                    default:
-                        throw new SparkRegistryException("Request scope not defined");
+                if (requestMethod != null) {
+                    requestMethod.registry(path, route);
+                } else {
+                    throw new SparkRegistryException("Request scope not defined");
                 }
             });
-
         }
     }
 
