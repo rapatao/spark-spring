@@ -8,9 +8,21 @@ import com.github.rascorp.spark.spring.configuration.SparkConfiguration;
  */
 public interface Registry {
 
+    /**
+     * Registry the spark component
+     *
+     * @param sparkConfiguration the spark configuration
+     */
     void registry(final SparkConfiguration sparkConfiguration);
 
-    default Integer weigh() {
-        return 1;
+    /**
+     * Defines the component run order.
+     * <p>
+     * The execution starts with the lower values.
+     *
+     * @return the order of the component
+     */
+    default Integer order() {
+        return 10;
     }
 }

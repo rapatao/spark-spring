@@ -25,7 +25,7 @@ public class SparkRegistryUtil {
      */
     public void registry(final SparkConfiguration sparkConfiguration) {
         registries.stream()
-                  .sorted((a, b) -> a.weigh().compareTo(b.weigh()))
+                  .sorted((a, b) -> a.order().compareTo(b.order()))
                   .forEach(registry -> registry.registry(sparkConfiguration));
 
     }

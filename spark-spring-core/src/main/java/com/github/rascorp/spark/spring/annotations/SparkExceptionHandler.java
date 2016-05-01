@@ -20,6 +20,6 @@ public @interface SparkExceptionHandler {
      *
      * @return the exception class
      */
-    Class<? extends Exception> value();
+    Class<? extends Exception>[] value() default {};
 
 }

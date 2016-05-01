@@ -28,8 +28,8 @@ public class SparkConfigurationRegistry implements Registry {
     }
 
     @Override
-    public Integer weigh() {
-        return -1;
+    public Integer order() {
+        return 1;
     }
 
 }
