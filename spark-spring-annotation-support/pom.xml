@@ -14,6 +14,22 @@
 
     <url>https://github.com/rapatao/spark-spring</url>
 
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Luiz Henrique Rapatao</name>
+            <email>rapatao@rapatao.com</email>
+            <organization>rapatao.com</organization>
+            <organizationUrl>http://www.rapatao.com</organizationUrl>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
