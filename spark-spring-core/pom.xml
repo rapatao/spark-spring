@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.rapatao.sparkjava</groupId>
         <artifactId>spark-spring</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>spark-spring-core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SparkJava Spring Context Support Core</name>
