@@ -12,6 +12,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <name>SparkJava Spring Context Support Core</name>
+    <description>Provide support for Spring Context when using Spark Framework</description>
     <url>https://github.com/rapatao/spark-spring</url>
 
     <licenses>
