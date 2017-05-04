@@ -25,9 +25,9 @@ public final class SparkExceptionHandlerRegistry {
      * @param method
      * @param sparkExceptionHandler
      */
-    static void registry(final SparkController sparkController,
-                         final Method method,
-                         final SparkExceptionHandler sparkExceptionHandler) {
+    protected static void registry(final SparkController sparkController,
+                                   final Method method,
+                                   final SparkExceptionHandler sparkExceptionHandler) {
         Arrays.stream(sparkExceptionHandler.value()).forEach(
                 clazz -> {
                     ExceptionHandler exceptionHandler =

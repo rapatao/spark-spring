@@ -1,8 +1,8 @@
 package com.rapatao.sparkjava.spring.registry.controller;
 
 import com.rapatao.sparkjava.spring.SparkController;
-import com.rapatao.sparkjava.spring.exceptions.SparkRegistryException;
 import com.rapatao.sparkjava.spring.annotations.SparkRequestHandler;
+import com.rapatao.sparkjava.spring.exceptions.SparkRegistryException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import spark.Route;
@@ -26,9 +26,9 @@ public final class SparkRequestHandlerRegistry {
      * @param method
      * @param sparkRequestHandler
      */
-    static void registry(final SparkController sparkController,
-                         final Method method,
-                         final SparkRequestHandler sparkRequestHandler) {
+    public static void registry(final SparkController sparkController,
+                                final Method method,
+                                final SparkRequestHandler sparkRequestHandler) {
         Arrays.stream(sparkRequestHandler.requestMethod()).forEach(requestMethod -> {
             Route route = (request, response) -> method.invoke(sparkController, request, response);
             String path = sparkController.getRootPath() + sparkRequestHandler.path();
